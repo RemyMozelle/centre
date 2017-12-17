@@ -47,16 +47,17 @@ const db = require('./config/database/db');
 passport.use(new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password',
-  passReqToCallback: true
+  passReqToCallback: true,
+
 },
 
   function (req, usernameField, passwordField, done) {
+
     db.getDb().query(`SELECT id, email, password FROM admin WHERE email='${usernameField}' && password='${passwordField}' `, (err, admin) => {
       if(err) { return done(err) }
       if(admin.length === 0) { 
         return done(null, false, req.flash('message', 'mot de passe ou email incorrect'));
       }
-      
       return done(null, admin[0]);
     })
   }
