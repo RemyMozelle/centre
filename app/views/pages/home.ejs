@@ -1,0 +1,8 @@
+<%- contentFor('content') %>
+<div class="container">
+  <% if(admin) { %>
+    <a href="/logout">se déconnecter</a>
+  <% } else { %>
+    <%- include admin %>
+  <% } %>
+</div>
