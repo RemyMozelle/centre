@@ -16,6 +16,10 @@ th {
 .navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a {
     color: #fff;
 } 
+.navbar-default .navbar-nav>li>a:hover {
+    background: rgba(255, 255, 255, 0.49);
+}
+
 .bandeau {
     height: auto;
     background: url('/img/bg_header.jpg') no-repeat fixed;
