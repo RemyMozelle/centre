@@ -2,6 +2,7 @@
 <div class="container">
   <% if(admin) { %>
     <!-- inclu la parti planning si la personne c'est bien connecté -->
+    <%- include ../includes/menu %>
     <%- include ../includes/planning %>
     <!-- SINON -->
     <% } else { %>

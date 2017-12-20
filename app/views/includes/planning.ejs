@@ -1,18 +1,101 @@
-<%- contentFor('menu') %>
-<nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#">Admin</a>
+<%- contentFor('content') %>
+
+<div class="table-responsive">
+  <h1>POSTE 1</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Semaine</th>
+        <% creneau.forEach(creneaux => { %>
+          <th>
+            <%= creneaux.creneau %>
+          </th>
+        <% }) %>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Lundi</td>
+        <td class="cr1">choupaka</td>
+        <td class="cr2"></td>
+        <td class="cr3"></td>
+        <td class="cr4"></td>
+      </tr>
+      <tr>
+        <td>Mardi</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        </tr>
+      <tr>
+        <td>Mercredi</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Jeudi</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Vendredi</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr> 
+    </tbody>
+  </table>
+</div>
+
+<!-- Select * from centre.creneaux_has_ordinateurs inner join centre.creneaux_has_semaines on centre.creneaux_has_ordinateurs.creneaux_id = centre.creneaux_has_semaines.creneaux_id -->
+
+<form method="post" action="/data" id="donnees">
+  <div class="row">
+    <div class="col-lg-offset-4 col-lg-4">
+      <!--  -->
+      <div class="col-lg-7">
+        <label for="listes visiteurs">Listes des visiteurs</label>
+        <select class="btn btn-default col-lg-12" name="users" form="donnees">
+          <% users.forEach(user => { %>
+            <option class="" name="listesUsers" value="<%= user.name %>">
+              <%= user.name %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="col-lg-7">
+        <label for="listes visiteurs">Créneaux</label>
+        <select class="btn btn-default col-lg-12" name="creneau" form="donnees">
+          <% creneau.forEach(creneau => { %>
+            <option class="" name="listesUsers" value="<%= creneau.creneau %>">
+              <%= creneau.creneau %>
+            </option>
+            <% }) %>
+        </select>
+      </div>
+
+      <div class="col-lg-7">
+        <label for="listes visiteurs">Jour</label>
+        <select class="btn btn-default col-lg-12" name="jour" form="donnees">
+          <% week.forEach(jour => { %>
+            <option class="" name="listesUsers" value="<%= jour.jour %>">
+              <%= jour.jour %>
+            </option>
+            <% }) %>
+        </select>
+      </div>
+    </div>
   </div>
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="/logout">se déconnecter</a></li>
-    </ul>
-  </div><!-- /.navbar-collapse -->
-</nav>
+  <div class="col-lg-12">
+    <button type="submit" class="btn btn-info">RÉSERVER</button>
+  </div>
+</form>
+

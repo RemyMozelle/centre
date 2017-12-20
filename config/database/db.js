@@ -5,8 +5,8 @@ const db = {
     const connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '',
-      database: 'centre'
+      password: 'root',
+      database: 'centrev2'
     })
     
     return connection

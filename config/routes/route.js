@@ -1,23 +1,17 @@
 const express = require('express');
 const route = express.Router();
-const adminController = require('../../app/controller/adminController');
 const expressValidator = require('express-validator')
 const passport = require('passport')
+const adminController = require('../../app/controller/adminController');
+const appController = require('../../app/controller/appController');
 
-route.get('/', (req, res) => {
-  res.render('pages/home.ejs', {
-    admin : req.user,
-    message : req.flash('message')
-  });
-}) 
 
-//route.post('/', adminController.addUser);
+route.get('/', appController.home)
+route.get('/logout', adminController.logout)
+route.post('/data', adminController.getDataPoste1)
 
-route.get('/logout', (req, res) => {
-  req.logOut();
-  res.redirect('/');
-});
 
+//se connecte directement si email et mot de passe sont correct
 route.post('/login',
   passport.authenticate('local', { 
     successRedirect: '/',

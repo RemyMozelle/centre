@@ -1,4 +1,5 @@
 const admin = require('../models/admin');
+const passport = require('passport')
 const expressValidator = require('express-validator')
 
 const adminController = {
@@ -21,12 +22,41 @@ const adminController = {
         name : req.body.name
       }
       //Ajoute le nom du visiteur
-      admin.insertUser(data)
+      admin.getInsertUser(data)
       //redirige l'administrateur une fois l'insertion effectué
       res.render('../views/pages/home', {
         flashSuccess: `vous avez bien ajouter Mr ou Mme : "${data.name}"`
       })
     }
+  },
+
+  getDataPoste1(req, res){
+
+    const users = req.body.users
+    const creneau = req.body.creneau
+    const jour = req.body.jour
+
+    const data = {
+      users : req.body.users,
+      creneau : req.body.creneau,
+      jour : req.body.jour
+    }
+
+    console.log(data);
+
+    admin.getInsertPlaning(data)
+
+    res.redirect('/')
+  },
+
+  /**
+   * 
+   * @param {*pour se déconnecter} req 
+   * @param {*pour être redirigé vers la home} res 
+   */
+  logout(req, res) {
+    req.logOut();
+    res.redirect('/');
   }
 }
 

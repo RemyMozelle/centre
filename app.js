@@ -24,7 +24,7 @@ app.use(expressValidator())
 app.use(cookieParser())
 app.use(session({
   secret: 'azertyuiop',
-  resave: true,
+  resave: false,
   saveUninitialized: true,
 }))
 
