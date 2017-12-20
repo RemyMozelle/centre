@@ -1,7 +1,7 @@
 <%- contentFor('content') %>
 
-<div class="table-responsive">
-  <h1>POSTE 1</h1>
+<div class="table-responsive col-lg-offset-1 col-lg-11">
+  <h2 class="poste">Planning du poste 1 :</h2>
 
   <table class="table table-hover">
     <thead>
@@ -24,7 +24,7 @@
         <% mardi.forEach(mardi => { %>
           <td class="text-left">
             <%= mardi.user %> de <%= mardi.creneau %>
-            <a href="/delete/<%= lundi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+            <a href="/delete/<%= mardi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
           </td>
         <% }) %>
 
@@ -35,8 +35,8 @@
         <% mercredi.forEach(mercredi => { %>
           <td class="text-left">
             <%= mercredi.user %> de
-              <%= mercredi.creneau %>
-                <a href="/delete/<%= lundi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+            <%= mercredi.creneau %>
+              <a href="/delete/<%= mercredi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
           </td>
           <% }) %>
       </tr>
@@ -45,8 +45,8 @@
         <% jeudi.forEach(jeudi => { %>
           <td class="text-left">
             <%= jeudi.user %> de
-              <%= jeudi.creneau %>
-                <a href="/delete/<%= lundi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+            <%= jeudi.creneau %>
+              <a href="/delete/<%= jeudi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
           </td>
           <% }) %>
       </tr>
@@ -55,8 +55,8 @@
         <% vendredi.forEach(vendredi => { %>
           <td class="text-left">
             <%= vendredi.user %> de
-              <%= vendredi.creneau %>
-                <a href="/delete/<%= lundi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+            <%= vendredi.creneau %>
+              <a href="/delete/<%= vendredi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
           </td>
           <% }) %>
       </tr> 
@@ -66,11 +66,12 @@
 
 <form method="post" action="/data" id="donnees">
   <div class="row">
-    <div class="col-lg-offset-4 col-lg-4">
+    <div class="col-lg-offset-1 col-lg-10 bloc_attribution">
+      <h3 class="userAttribution">Attribuer un user au poste 1 :</h3> 
       <!--  -->
-      <div class="col-lg-7">
-        <label for="listes visiteurs">Listes des visiteurs</label>
-        <select class="btn btn-default col-lg-12" name="users" form="donnees">
+      <div class="col-lg-3">
+        <label for="listes visiteurs">Listes des users</label>
+        <select class="btn btn-default col-lg-12 col-xs-12" name="users" form="donnees">
           <% users.forEach(user => { %>
             <option class="" name="listesUsers" value="<%= user.name %>">
               <%= user.name %>
@@ -79,9 +80,9 @@
         </select>
       </div>
 
-      <div class="col-lg-7">
-        <label for="listes visiteurs">Créneaux</label>
-        <select class="btn btn-default col-lg-12" name="creneau" form="donnees">
+      <div class="col-lg-3">
+        <label for="listes visiteurs">Créneaux horraires</label>
+        <select class="btn btn-default col-lg-12 col-xs-12" name="creneau" form="donnees">
           <% creneau.forEach(creneau => { %>
             <option class="" name="listesUsers" value="<%= creneau.creneau %>">
               <%= creneau.creneau %>
@@ -90,9 +91,9 @@
         </select>
       </div>
 
-      <div class="col-lg-7">
-        <label for="listes visiteurs">Jour</label>
-        <select class="btn btn-default col-lg-12" name="jour" form="donnees">
+      <div class="col-lg-3">
+        <label for="listes visiteurs">Jours</label>
+        <select class="btn btn-default col-lg-12 col-xs-12" name="jour" form="donnees">
           <% week.forEach(jour => { %>
             <option class="" name="listesUsers" value="<%= jour.jour %>">
               <%= jour.jour %>
@@ -100,12 +101,12 @@
             <% }) %>
         </select>
       </div>
+      <input type="text" hidden value="poste1" name="poste1">
+      <div class="col-lg-2 col-xs-2 reserver">
+        <button type="submit" class="btn btn-info">Réserver</button>
+      </div>
     
     </div>
-  </div>
-  <input type="text" hidden value="poste1" name="poste1">
-  <div class="col-lg-12">
-    <button type="submit" class="btn btn-info">RÉSERVER</button>
   </div>
 </form>
 <script>

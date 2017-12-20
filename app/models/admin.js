@@ -21,6 +21,8 @@ const admin = {
   getInsertPlaning(data){
     return new Promise((resolve, reject) => {
       
+      const error = "ce créneau a déjà été attribué a un visiteur"
+
       db.getDb().query(`SELECT COUNT(*) AS count 
       FROM reservations 
       WHERE creneau ='${data.creneau}' && jour = '${data.jour}'`, data, (err, onlyOne) => {
@@ -31,7 +33,7 @@ const admin = {
             err ? reject(err) : resolve(result)
           })
         } else {
-          return false
+          module.exports = error
         }
       })
     })
