@@ -20,8 +20,11 @@ const admin = {
 
   getInsertPlaning(data){
     return new Promise((resolve, reject) => {
-      console.log(data.creneau);
-      db.getDb().query(`SELECT COUNT(*) AS count FROM reservations WHERE creneau ='${data.creneau}' && jour = 'lundi'`, data, (err, onlyOne) => {
+      
+      db.getDb().query(`SELECT COUNT(*) AS count 
+      FROM reservations 
+      WHERE creneau ='${data.creneau}' && jour = '${data.jour}'`, data, (err, onlyOne) => {
+        
         if (onlyOne[0].count == 0) {
           db.getDb().query(`
           INSERT INTO reservations SET ?`, data, (err, result) => {
