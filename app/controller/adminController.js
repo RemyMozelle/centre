@@ -11,23 +11,25 @@ const adminController = {
     //verifie si le champ name n'est pas vide
     req.checkBody('name', 'le nom du visiteur ne peut être vide').notEmpty()
     //si le champ name est vide alors on rend une erreur
-    const errors = req.validationErrors()
+    /*const errors = req.validationErrors()
     if(errors) {
       res.render('../views/pages/home', {
         flashErrors: errors
       })
-    } else {
+    } else {*/
       //si il n'y a pas d'erreur alors on stock le champ "name"
       const data = {
         name : req.body.name
       }
-      //Ajoute le nom du visiteur
-      admin.getInsertUser(data)
+      ///Ajoute le nom du visiteur
+    console.log(data)
+    admin.getInsertUser(data)
+    res.redirect('/')
       //redirige l'administrateur une fois l'insertion effectué
-      res.render('../views/pages/home', {
+      /*res.render('../views/pages/home', {
         flashSuccess: `vous avez bien ajouter Mr ou Mme : "${data.name}"`
-      })
-    }
+      })*/
+    //}
   },
 
   getDataPoste1(req, res){
@@ -52,7 +54,6 @@ const adminController = {
       jour: req.body.jour,
       poste: req.body.poste2
     }
-    console.log(data);
     admin.getInsertPlaning(data)
 
     res.redirect('/')

@@ -6,6 +6,7 @@ const adminController = require('../../app/controller/adminController');
 const appController = require('../../app/controller/appController');
 
 route.get('/', appController.home);
+route.post('/insertUser', adminController.addUser);
 route.get('/logout', adminController.logout);
 route.post('/data', adminController.getDataPoste1);
 route.post('/data2', adminController.getDataPoste2);

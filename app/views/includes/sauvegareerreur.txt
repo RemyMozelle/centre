@@ -1,0 +1,7 @@
+    <% if ((typeof(flashErrors) && typeof(flashSuccess)) === 'undefined') { %><% } %>
+
+    <% if (typeof(flashErrors) === 'object') { %>
+      <% flashErrors.forEach(errors => { %><p class="alert alert-danger"><%= errors.msg %></p><% }) %>
+    <% } %>
+    
+    <% if (typeof(flashSuccess) === 'string') { %> <p class="alert alert-success"><%= flashSuccess %></p><% } %>
