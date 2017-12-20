@@ -28,7 +28,6 @@ const admin = {
         if (onlyOne[0].count == 0) {
           db.getDb().query(`
           INSERT INTO reservations SET ?`, data, (err, result) => {
-            console.log(result);
             err ? reject(err) : resolve(result)
           })
         } else {
@@ -38,12 +37,20 @@ const admin = {
     })
   },
 
+  getDeleteUsersPlaning(id) {
+    return new Promise((resolve, reject) => {
+      db.getDb().query('DELETE FROM reservations WHERE id = ?', id, (err, result) => {
+        err ? reject(err) : resolve(result)
+      })
+    });
+  },
+
   getUsersPlaningPostes(poste, jour){
     return new Promise((resolve, reject) => {
-        db.getDb().query(`
-        SELECT user, creneau FROM reservations where jour = '${jour}' && poste = '${poste}' ORDER BY creneau asc`, (err, result) => {
-          err ? reject(err) : resolve(result)
-        })
+      db.getDb().query(`
+      SELECT id, user, creneau FROM reservations where jour = '${jour}' && poste = '${poste}' ORDER BY id`, (err, result) => {
+        err ? reject(err) : resolve(result)
+      })
     })
   },
 }

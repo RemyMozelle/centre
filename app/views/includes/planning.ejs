@@ -12,39 +12,53 @@
     <tbody>
       <tr>
         <td>Lundi</td>
-        <% userPlaning.forEach(userPlanings => { %>
-          <td class="cr1">
-           <%= userPlanings.user %> de <%= userPlanings.creneau %>
+        <% lundi.forEach(lundi => { %>
+          <td class="text-left">
+            <%= lundi.user %> de <%= lundi.creneau %>
+            <a href="/delete/<%= lundi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
           </td>
         <% }) %> 
       </tr>
       <tr>
         <td>Mardi</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <% mardi.forEach(mardi => { %>
+          <td class="text-left">
+            <%= mardi.user %> de <%= mardi.creneau %>
+            <a href="/delete/<%= lundi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+          </td>
+        <% }) %>
+
+       
         </tr>
       <tr>
         <td>Mercredi</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <% mercredi.forEach(mercredi => { %>
+          <td class="text-left">
+            <%= mercredi.user %> de
+              <%= mercredi.creneau %>
+                <a href="/delete/<%= lundi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+          </td>
+          <% }) %>
       </tr>
       <tr>
         <td>Jeudi</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <% jeudi.forEach(jeudi => { %>
+          <td class="text-left">
+            <%= jeudi.user %> de
+              <%= jeudi.creneau %>
+                <a href="/delete/<%= lundi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+          </td>
+          <% }) %>
       </tr>
       <tr>
         <td>Vendredi</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <% vendredi.forEach(vendredi => { %>
+          <td class="text-left">
+            <%= vendredi.user %> de
+              <%= vendredi.creneau %>
+                <a href="/delete/<%= lundi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+          </td>
+          <% }) %>
       </tr> 
     </tbody>
   </table>

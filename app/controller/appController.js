@@ -11,14 +11,26 @@ const appController = {
     week.getWeek().then(semaine => {
       creneau.getCreneau().then(crenaux => {
         admin.getAllUsers().then(user => {
-          admin.getUsersPlaningPostes('poste1', 'mercredi').then(userPlanings => {
-            res.render('../views/pages/home', {
-              admin : req.user,
-              message : req.flash('message'),
-              week : semaine,
-              creneau : crenaux,
-              users : user,
-              userPlaning : userPlanings
+          admin.getUsersPlaningPostes('poste1', 'lundi').then(lundi => {
+            admin.getUsersPlaningPostes('poste1', 'mardi').then(mardi => {
+              admin.getUsersPlaningPostes('poste1', 'mercredi').then(mercredi => {
+                admin.getUsersPlaningPostes('poste1', 'jeudi').then(jeudi => {
+                  admin.getUsersPlaningPostes('poste1', 'vendredi').then(vendredi => {
+                    res.render('../views/pages/home', {
+                      admin: req.user,
+                      message: req.flash('message'),
+                      week: semaine,
+                      creneau: crenaux,
+                      users: user,
+                      lundi: lundi,
+                      mardi: mardi,
+                      mercredi: mercredi,
+                      jeudi: jeudi,
+                      vendredi: vendredi
+                    })
+                  })
+                })
+              })
             })
           })
         })

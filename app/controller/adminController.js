@@ -49,6 +49,12 @@ const adminController = {
     res.redirect('/')
   },
 
+  deleteUserPlaning(req, res) {
+    admin.getDeleteUsersPlaning(req.params.id).then(users => {
+    }).catch(err => console.log('impossible de supprimer'))
+    res.redirect('/')
+  },
+
   /**
    * 
    * @param {*pour se déconnecter} req 
