@@ -25,7 +25,7 @@ const admin = {
 
       db.getDb().query(`SELECT COUNT(*) AS count 
       FROM reservations 
-      WHERE creneau ='${data.creneau}' && jour = '${data.jour}'`, data, (err, onlyOne) => {
+      WHERE creneau ='${data.creneau}' && jour = '${data.jour}' && poste = '${data.poste}'`, data, (err, onlyOne) => {
         
         if (onlyOne[0].count == 0) {
           db.getDb().query(`

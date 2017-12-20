@@ -32,11 +32,6 @@ const adminController = {
 
   getDataPoste1(req, res){
 
-    const users = req.body.users
-    const creneau = req.body.creneau
-    const jour = req.body.jour
-    const poste = req.body.poste1
-
     const data = {
       user : req.body.users,
       creneau : req.body.creneau,
@@ -46,6 +41,20 @@ const adminController = {
 
     admin.getInsertPlaning(data)
     
+    res.redirect('/')
+  },
+
+  getDataPoste2(req, res) {
+
+    const data = {
+      user: req.body.users,
+      creneau: req.body.creneau,
+      jour: req.body.jour,
+      poste: req.body.poste2
+    }
+    console.log(data);
+    admin.getInsertPlaning(data)
+
     res.redirect('/')
   },
 
