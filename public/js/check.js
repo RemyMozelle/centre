@@ -10,17 +10,3 @@
 
   
 }); */
-
-
-
-
-  
-const allTd = document.querySelectorAll('td');
-
-for(let i = 0; i < allTd.length; i++) {
-  if(allTd[i].innerHTML == ''){
-    console.log('ce champ son vide');
-  } else {
-    console.log('ce champ ne son pas vide');
-  }
-}

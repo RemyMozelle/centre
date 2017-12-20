@@ -35,17 +35,17 @@ const adminController = {
     const users = req.body.users
     const creneau = req.body.creneau
     const jour = req.body.jour
+    const poste = req.body.poste1
 
     const data = {
-      users : req.body.users,
+      user : req.body.users,
       creneau : req.body.creneau,
-      jour : req.body.jour
+      jour : req.body.jour,
+      poste : req.body.poste1
     }
 
-    console.log(data);
-
     admin.getInsertPlaning(data)
-
+    
     res.redirect('/')
   },
 

@@ -11,7 +11,7 @@ const appController = {
     week.getWeek().then(semaine => {
       creneau.getCreneau().then(crenaux => {
         admin.getAllUsers().then(user => {
-          admin.getUsersPlaningPoste1().then(userPlanings => {
+          admin.getUsersPlaningPostes('poste1', 'mercredi').then(userPlanings => {
             res.render('../views/pages/home', {
               admin : req.user,
               message : req.flash('message'),

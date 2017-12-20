@@ -20,17 +20,25 @@ const admin = {
 
   getInsertPlaning(data){
     return new Promise((resolve, reject) => {
-      db.getDb().query(`
-      INSERT INTO reservations SET ?`, data, (err, result) => {
-        err ? reject(err) : resolve(result)
+      console.log(data.creneau);
+      db.getDb().query(`SELECT COUNT(*) AS count FROM reservations WHERE creneau ='${data.creneau}' && jour = 'lundi'`, data, (err, onlyOne) => {
+        if (onlyOne[0].count == 0) {
+          db.getDb().query(`
+          INSERT INTO reservations SET ?`, data, (err, result) => {
+            console.log(result);
+            err ? reject(err) : resolve(result)
+          })
+        } else {
+          return false
+        }
       })
     })
   },
 
-  getUsersPlaningPoste1(){
+  getUsersPlaningPostes(poste, jour){
     return new Promise((resolve, reject) => {
         db.getDb().query(`
-        SELECT users FROM reservations where jour = 'MARDI' ORDER BY creneau asc`, (err, result) => {
+        SELECT user, creneau FROM reservations where jour = '${jour}' && poste = '${poste}' ORDER BY creneau asc`, (err, result) => {
           err ? reject(err) : resolve(result)
         })
     })
