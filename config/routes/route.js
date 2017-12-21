@@ -28,7 +28,7 @@ route.post('/data5', adminController.getDataPoste5);
 //se connecte directement si email et mot de passe sont correct
 route.post('/login',
   passport.authenticate('local', { 
-    successRedirect: '/',
+    successRedirect: '/poste1',
     failureRedirect: '/',
     failureFlash: true,
   })
