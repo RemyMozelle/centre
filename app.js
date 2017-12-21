@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
 const flash = require('connect-flash')
+const dotenv = require('dotenv').config({ path: '.env' })
 
 app.set('view engine', 'ejs');
 app.set('views', 'app/views');

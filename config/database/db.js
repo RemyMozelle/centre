@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+const dotenv = require('dotenv').config({ path: '.env' })
 
 const db = {
   getDb(){
