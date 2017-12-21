@@ -38,7 +38,7 @@ passport.serializeUser(function (user, done) {
 
 passport.deserializeUser(function (id, done) {
   db.getDb().query('SELECT * FROM admin', [id], (err, result) => {
-    done(null, result[0]);
+    done(null, result);
   })
 });
 
