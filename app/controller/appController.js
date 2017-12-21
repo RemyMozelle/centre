@@ -1,7 +1,6 @@
 const admin = require('../models/admin');
 const week = require('../models/week');
 const creneau = require('../models/creneau');
-const poste = require('../models/poste');
 
 const appController = {
   /**
