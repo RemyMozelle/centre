@@ -33,12 +33,12 @@ app.use(passport.session());
 app.use(flash());
 
 passport.serializeUser(function (user, done) {
-  done(null, user);
+  done(null, user.id);
 });
 
 passport.deserializeUser(function (id, done) {
-  db.getDb().query('SELECT * FROM admin', [id], (err, result) => {
-    done(null, result);
+  db.getDb().query('SELECT * FROM admin WHERE id = ?', [id], (err, result) => {
+    done(null, result[0]);
   })
 });
 

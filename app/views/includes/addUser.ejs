@@ -1,10 +1,14 @@
 <%- contentFor('addUser') %>
-<div class="row">
   <form method="post" action="/insertUser">
-      <div class="form-group">
-        <label for="name">Nom</label>
-        <input type="text" name="name" class="form-control" placeholder="Nom">
+    <div class="row">
+      <div class="col-lg-offset-1 col-lg-3 block_attribution" style="padding-left:28px">
+        <div class="form-group">
+          <label for="name">Nom</label>
+          <input type="text" name="name" class="form-control" placeholder="Nom">
+        </div>
       </div>
-      <button type="submit" class="btn btn-info">Ajouter</button>
+      <div class="col-lg-1 reserver">
+        <button type="submit" class="btn btn-info">Ajouter un visiteur</button>
+      </div>
+    </div>
   </form>
-</div>
