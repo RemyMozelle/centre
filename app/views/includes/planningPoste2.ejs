@@ -12,15 +12,57 @@
     <tbody>
       <tr>
         <td>Lundi</td>
-        <% lundiPoste2.forEach(lundi => { %>
+        <% lundi.forEach(lundi => { %>
           <td class="text-left">
             <%= lundi.user %> de
-              <%= lundi.creneau %>
-                <a href="/delete/<%= lundi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+            <%= lundi.creneau %>
+            <a href="/deletePlanning2/<%= lundi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+          </td>
+        <% }) %>
+      </tr>
+      <tr>
+        <td>Mardi</td>
+        <% mardi.forEach(mardi => { %>
+          <td class="text-left">
+            <%= mardi.user %> de
+            <%= mardi.creneau %>
+            <a href="/deletePlanning2/<%= mardi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+          </td>
+        <% }) %>
+      </tr>
+
+      <tr>
+        <td>Mercredi</td>
+        <% mercredi.forEach(mercredi => { %>
+          <td class="text-left">
+            <%= mercredi.user %> de
+            <%= mercredi.creneau %>
+            <a href="/deletePlanning2/<%= mercredi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
           </td>
           <% }) %>
       </tr>
 
+      <tr>
+        <td>Jeudi</td>
+        <% jeudi.forEach(jeudi => { %>
+          <td class="text-left">
+            <%= jeudi.user %> de
+            <%= jeudi.creneau %>
+            <a href="/deletePlanning2/<%= jeudi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+          </td>
+          <% }) %>
+      </tr>
+
+      <tr>
+        <td>Vendredi</td>
+        <% vendredi.forEach(vendredi => { %>
+          <td class="text-left">
+            <%= vendredi.user %> de
+            <%= vendredi.creneau %>
+            <a href="/deletePlanning2/<%= vendredi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+          </td>
+        <% }) %>
+      </tr>
     </tbody>
   </table>
 </div>

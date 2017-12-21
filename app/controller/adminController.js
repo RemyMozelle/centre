@@ -33,7 +33,6 @@ const adminController = {
   },
 
   getDataPoste1(req, res){
-
     const data = {
       user : req.body.users,
       creneau : req.body.creneau,
@@ -43,7 +42,7 @@ const adminController = {
 
     admin.getInsertPlaning(data)
     
-    res.redirect('/')
+    res.redirect('/poste1')
   },
 
   getDataPoste2(req, res) {
@@ -54,15 +53,79 @@ const adminController = {
       jour: req.body.jour,
       poste: req.body.poste2
     }
+
     admin.getInsertPlaning(data)
 
-    res.redirect('/')
+    res.redirect('/poste2')
   },
 
-  deleteUserPlaning(req, res) {
+  getDataPoste3(req, res) {
+    const data = {
+      user: req.body.users,
+      creneau: req.body.creneau,
+      jour: req.body.jour,
+      poste: req.body.poste3
+    }
+
+    admin.getInsertPlaning(data)
+
+    res.redirect('/poste3')
+  },
+
+  getDataPoste4(req, res) {
+    const data = {
+      user: req.body.users,
+      creneau: req.body.creneau,
+      jour: req.body.jour,
+      poste: req.body.poste4
+    }
+
+    admin.getInsertPlaning(data)
+
+    res.redirect('/poste4')
+  },
+
+  getDataPoste5(req, res) {
+    const data = {
+      user: req.body.users,
+      creneau: req.body.creneau,
+      jour: req.body.jour,
+      poste: req.body.poste5
+    }
+
+    admin.getInsertPlaning(data)
+
+    res.redirect('/poste5')
+  },
+
+  deleteUserPlaning1(req, res) {
     admin.getDeleteUsersPlaning(req.params.id).then(users => {
     }).catch(err => console.log('impossible de supprimer'))
-    res.redirect('/')
+    res.redirect('/poste1')
+  },
+
+  deleteUserPlaning2(req, res) {
+    admin.getDeleteUsersPlaning(req.params.id).then(users => {
+    }).catch(err => console.log('impossible de supprimer'))
+    res.redirect('/poste2')
+  },
+
+  deleteUserPlaning3(req, res) {
+    admin.getDeleteUsersPlaning(req.params.id).then(users => {
+    }).catch(err => console.log('impossible de supprimer'))
+    res.redirect('/poste3')
+  },
+
+  deleteUserPlaning4(req, res) {
+    admin.getDeleteUsersPlaning(req.params.id).then(users => {
+    }).catch(err => console.log('impossible de supprimer'))
+    res.redirect('/poste4')
+  },
+
+  deleteUserPlaning5(req, res) {
+    admin.getDeleteUsersPlaning(req.params.id).then(users => {
+    }).catch(err => console.log('impossible de supprimer'))
+    res.redirect('/poste5')
   },
 
   /**

@@ -12,50 +12,49 @@
     <tbody>
       <tr>
         <td>Lundi</td>
-        <% lundiPoste1.forEach(lundi => { %>
+        <% lundi.forEach(lundi => { %>
           <td class="text-left">
             <%= lundi.user %> de <%= lundi.creneau %>
-            <a href="/delete/<%= lundi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+            <a href="/deletePlanning1/<%= lundi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
           </td>
         <% }) %> 
       </tr>
       <tr>
         <td>Mardi</td>
-        <% mardiPoste1.forEach(mardi => { %>
+        <% mardi.forEach(mardi => { %>
           <td class="text-left">
             <%= mardi.user %> de <%= mardi.creneau %>
-            <a href="/delete/<%= mardi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+            <a href="/deletePlanning1/<%= mardi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
           </td>
         <% }) %>
-       
-        </tr>
+      </tr>
       <tr>
         <td>Mercredi</td>
-        <% mercrediPoste1.forEach(mercredi => { %>
+        <% mercredi.forEach(mercredi => { %>
           <td class="text-left">
             <%= mercredi.user %> de
             <%= mercredi.creneau %>
-              <a href="/delete/<%= mercredi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+              <a href="/deletePlanning1/<%= mercredi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
           </td>
           <% }) %>
       </tr>
       <tr>
         <td>Jeudi</td>
-        <% jeudiPoste1.forEach(jeudi => { %>
+        <% jeudi.forEach(jeudi => { %>
           <td class="text-left">
             <%= jeudi.user %> de
             <%= jeudi.creneau %>
-              <a href="/delete/<%= jeudi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+              <a href="/deletePlanning1/<%= jeudi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
           </td>
           <% }) %>
       </tr>
       <tr>
         <td>Vendredi</td>
-        <% vendrediPoste1.forEach(vendredi => { %>
+        <% vendredi.forEach(vendredi => { %>
           <td class="text-left">
             <%= vendredi.user %> de
             <%= vendredi.creneau %>
-              <a href="/delete/<%= vendredi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
+              <a href="/deletePlanning1/<%= vendredi.id %>" style="color:red" class="glyphicon glyphicon-minus-sign"></a>
           </td>
           <% }) %>
       </tr> 
@@ -63,14 +62,14 @@
   </table>
 </div>
 
-<form method="post" action="/data" id="donnees">
+<form method="post" action="/data" id="data">
   <div class="row">
     <div class="col-lg-offset-1 col-lg-10 bloc_attribution">
       <h3 class="userAttribution">Attribuer un visiteur au poste 1 :</h3> 
       <!--  -->
       <div class="col-xs-12 col-lg-3">
         <label for="listes visiteurs">Listes des users</label>
-        <select class="btn btn-default col-lg-12 col-xs-12" name="users" form="donnees">
+        <select class="btn btn-default col-lg-12 col-xs-12" name="users" form="data">
           <% users.forEach(user => { %>
             <option class="" name="listesUsers" value="<%= user.name %>">
               <%= user.name %>
@@ -81,7 +80,7 @@
 
       <div class="col-xs-12 col-lg-3">
         <label for="listes visiteurs">Créneaux horraires</label>
-        <select class="btn btn-default col-lg-12 col-xs-12" name="creneau" form="donnees">
+        <select class="btn btn-default col-lg-12 col-xs-12" name="creneau" form="data">
           <% creneau.forEach(creneau => { %>
             <option class="" name="listesUsers" value="<%= creneau.creneau %>">
               <%= creneau.creneau %>
@@ -92,7 +91,7 @@
 
       <div class="col-xs-12 col-lg-3">
         <label for="listes visiteurs">Jours</label>
-        <select class="btn btn-default col-lg-12 col-xs-12" name="jour" form="donnees">
+        <select class="btn btn-default col-lg-12 col-xs-12" name="jour" form="data">
           <% week.forEach(jour => { %>
             <option class="" name="listesUsers" value="<%= jour.jour %>">
               <%= jour.jour %>
@@ -107,10 +106,3 @@
     </div>
   </div>
 </form>
-<script>
-
-</script>
-<!-- 
-<div class="col-lg-offset-4 col-lg-4">
-  
-  <div class="col-lg-7"> --> 

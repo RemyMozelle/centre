@@ -25,7 +25,7 @@ app.use(cookieParser())
 app.use(session({
   secret: 'azertyuiop',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
 }))
 
 app.use(passport.initialize());
