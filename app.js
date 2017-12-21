@@ -42,11 +42,9 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (id, done) {
-  db.getDb().getConnection((error, connexion) => {
-    connexion.query('SELECT * FROM admin WHERE id = ?', [id], (err, result) => {
-      connexion.release()
+  db.getDb().query('SELECT * FROM admin WHERE id = ?', [id], (err, result, fields) => {
+    if (err) throw err;
       done(null, result[0]);
-    })
   })
 });
 
@@ -59,18 +57,23 @@ passport.use(new LocalStrategy({
 
   function (req, usernameField, passwordField, done) {
     db.getDb().getConnection((error, connexion) => {
-      connexion.query(`SELECT id, email, password FROM admin WHERE email='${usernameField}' && password='${passwordField}' `, (err, admin) => {
+      connexion.query(`SELECT id, email, password FROM admin WHERE email='${usernameField}' && password='${passwordField}' `, (err, result, fields) => {
         connexion.release()
 
         if (err) { return done(err) }
-        if (admin.length === 0) {
+        if (result.length === 0) {
           return done(null, false, req.flash('message', 'mot de passe ou email incorrect'));
         }
-        return done(null, admin[0]);
+        return done(null, result[0]);
       })
     })
   }
 ));
+
+app.use('/', (req, res, next) => {
+  if (req.isAuthenticated()) {console.log('tu es connecté');}
+  next();
+})
 
 app.use(require('./config/routes/route'));
 
