@@ -29,7 +29,7 @@ app.use(cookieParser())
 app.use(session({
   secret: 'azertyuiopqsdfghjklm',
   resave: false,
-  store: sessionStore,
+  //store: sessionStore,
   saveUninitialized: false,
 }))
 
