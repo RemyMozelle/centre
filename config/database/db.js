@@ -21,7 +21,13 @@ const db = {
   },
 
   schemaHeroku() {
-    const connection = mysql.createConnection(process.env.JAWSDB_URL);
+    const connection = {
+      host: process.env.HOST,
+      username: process.env.USERNAME,
+      password: process.env.PASSWORD,
+      database: process.env.DATABASE,
+      port: process.env.PORT
+    }
     return connection
   },
 
