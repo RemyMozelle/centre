@@ -2,7 +2,7 @@ const mysql = require('mysql');
 const dotenv = require('dotenv').config({ path: '.env' });
 
 const db = {
-  getDb(env = 'jaws') {
+  getDb(env) {
     
     if (env == 'jaws') {
       const connection = mysql.createConnection(process.env.JAWSDB_URL);

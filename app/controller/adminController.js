@@ -4,49 +4,47 @@ const expressValidator = require('express-validator')
 
 const adminController = {
   /**
+   * ajoute un visiteur dans la liste
+   * puis la redirige vers le poste 1
    * @param {*req.body.name} req 
    * @param {*res.redirect("/")} res 
    */
-  addUser(req, res){
-    //verifie si le champ name n'est pas vide
-    req.checkBody('name', 'le nom du visiteur ne peut être vide').notEmpty()
-    //si le champ name est vide alors on rend une erreur
-    /*const errors = req.validationErrors()
-    if(errors) {
-      res.render('../views/pages/home', {
-        flashErrors: errors
-      })
-    } else {*/
-      //si il n'y a pas d'erreur alors on stock le champ "name"
-      const data = {
-        name : req.body.name
-      }
-      ///Ajoute le nom du visiteur
-    console.log(data)
-    admin.getInsertUser(data)
-    res.redirect('/')
-      //redirige l'administrateur une fois l'insertion effectué
-      /*res.render('../views/pages/home', {
-        flashSuccess: `vous avez bien ajouter Mr ou Mme : "${data.name}"`
-      })*/
-    //}
-  },
-
-  getDataPoste1(req, res){
+  addUser(req, res) {
     const data = {
-      user : req.body.users,
-      creneau : req.body.creneau,
-      jour : req.body.jour,
-      poste : req.body.poste1
+      name: req.body.name
     }
-
-    admin.getInsertPlaning(data)
-    
+    ///Ajoute le nom du visiteur
+    admin.getInsertUser(data)
     res.redirect('/poste1')
   },
 
-  getDataPoste2(req, res) {
+  /**
+   * Récupère les les champs du formulaire du poste 1
+   * Redirige l'admin sur la pages du poste 1 après avoir inserer un visiteur dans le planning
+   * @param {*req.body (users, creneau, jour, poste1)} req 
+   * @param {*res.redirect} res 
+   * @var {*} data
+   */
+  getDataPoste1(req, res) {
+    const data = {
+      user: req.body.users,
+      creneau: req.body.creneau,
+      jour: req.body.jour,
+      poste: req.body.poste1
+    }
 
+    admin.getInsertPlaning(data)
+    res.redirect('/poste1')
+  },
+
+  /**
+   * Récupère les les champs du formulaire du poste 2
+   * Redirige l'admin sur la pages du poste 2 après avoir inserer un visiteur dans le planning
+   * @param {*req.body (users, creneau, jour, poste2)} req 
+   * @param {*res.redirect} res 
+   * @var {*} data
+   */
+  getDataPoste2(req, res) {
     const data = {
       user: req.body.users,
       creneau: req.body.creneau,
@@ -55,10 +53,16 @@ const adminController = {
     }
 
     admin.getInsertPlaning(data)
-
     res.redirect('/poste2')
   },
 
+  /**
+   * Récupère les les champs du formulaire du poste 3
+   * Redirige l'admin sur la pages du poste 3 après avoir inserer un visiteur dans le planning
+   * @param {*req.body (users, creneau, jour, poste3)} req 
+   * @param {*res.redirect} res 
+   * @var {*} data
+   */
   getDataPoste3(req, res) {
     const data = {
       user: req.body.users,
@@ -68,10 +72,16 @@ const adminController = {
     }
 
     admin.getInsertPlaning(data)
-
     res.redirect('/poste3')
   },
 
+  /**
+   * Récupère les les champs du formulaire du poste 4
+   * Redirige l'admin sur la pages du poste 4 après avoir inserer un visiteur dans le planning
+   * @param {*req.body (users, creneau, jour, poste4)} req 
+   * @param {*res.redirect} res 
+   * @var {*} data
+   */
   getDataPoste4(req, res) {
     const data = {
       user: req.body.users,
@@ -81,10 +91,16 @@ const adminController = {
     }
 
     admin.getInsertPlaning(data)
-
     res.redirect('/poste4')
   },
 
+  /**
+   * Récupère les les champs du formulaire du poste 5
+   * Redirige l'admin sur la pages du poste 5 après avoir inserer un visiteur dans le planning
+   * @param {*req.body (users, creneau, jour, poste5)} req 
+   * @param {*res.redirect} res 
+   * @var {*} data
+   */
   getDataPoste5(req, res) {
     const data = {
       user: req.body.users,
@@ -92,44 +108,78 @@ const adminController = {
       jour: req.body.jour,
       poste: req.body.poste5
     }
-
+    //appel la method du model "admin"
     admin.getInsertPlaning(data)
-
-    res.redirect('/poste5')
-  },
-
-  deleteUserPlaning1(req, res) {
-    admin.getDeleteUsersPlaning(req.params.id).then(users => {
-    }).catch(err => console.log('impossible de supprimer'))
-    res.redirect('/poste1')
-  },
-
-  deleteUserPlaning2(req, res) {
-    admin.getDeleteUsersPlaning(req.params.id).then(users => {
-    }).catch(err => console.log('impossible de supprimer'))
-    res.redirect('/poste2')
-  },
-
-  deleteUserPlaning3(req, res) {
-    admin.getDeleteUsersPlaning(req.params.id).then(users => {
-    }).catch(err => console.log('impossible de supprimer'))
-    res.redirect('/poste3')
-  },
-
-  deleteUserPlaning4(req, res) {
-    admin.getDeleteUsersPlaning(req.params.id).then(users => {
-    }).catch(err => console.log('impossible de supprimer'))
-    res.redirect('/poste4')
-  },
-
-  deleteUserPlaning5(req, res) {
-    admin.getDeleteUsersPlaning(req.params.id).then(users => {
-    }).catch(err => console.log('impossible de supprimer'))
     res.redirect('/poste5')
   },
 
   /**
-   * 
+   * recupère l'id dans l'url
+   * supprimer le planning du visiteur selon son id
+   * redirige l'admin sur le même poste lors de la suppression du planning du visiteur
+   * @param {*req.params.id} req 
+   * @param {*res.redirect} res 
+   */
+  deleteUserPlaning1(req, res) {
+    admin.getDeleteUsersPlaning(req.params.id).then(users => {
+    }).catch(err => console.log('impossible de supprimer planingposte1'))
+    
+    res.redirect('/poste1')
+  },
+
+  /**
+   * recupère l'id dans l'url
+   * supprimer le planning du visiteur selon son id
+   * redirige l'admin sur le même poste lors de la suppression du planning du visiteur
+   * @param {*req.params.id} req 
+   * @param {*res.redirect} res 
+   */
+  deleteUserPlaning2(req, res) {
+    admin.getDeleteUsersPlaning(req.params.id).then(users => {
+    }).catch(err => console.log('impossible de supprimer planingposte2'))
+    res.redirect('/poste2')
+  },
+
+  /**
+   * recupère l'id dans l'url
+   * supprimer le planning du visiteur selon son id
+   * redirige l'admin sur le même poste lors de la suppression du planning du visiteur
+   * @param {*req.params.id} req 
+   * @param {*res.redirect} res 
+   */
+  deleteUserPlaning3(req, res) {
+    admin.getDeleteUsersPlaning(req.params.id).then(users => {
+    }).catch(err => console.log('impossible de supprimer planingposte3'))
+    res.redirect('/poste3')
+  },
+
+  /**
+   * recupère l'id dans l'url
+   * supprimer le planning du visiteur selon son id
+   * redirige l'admin sur le même poste lors de la suppression du planning du visiteur
+   * @param {*req.params.id} req 
+   * @param {*res.redirect} res 
+   */
+  deleteUserPlaning4(req, res) {
+    admin.getDeleteUsersPlaning(req.params.id).then(users => {
+    }).catch(err => console.log('impossible de supprimer planingposte4'))
+    res.redirect('/poste4')
+  },
+  /**
+   * recupère l'id dans l'url
+   * supprimer le planning du visiteur selon son id
+   * redirige l'admin sur le même poste lors de la suppression du planning du visiteur
+   * @param {*req.params.id} req 
+   * @param {*res.redirect} res 
+   */
+  deleteUserPlaning5(req, res) {
+    admin.getDeleteUsersPlaning(req.params.id).then(users => {
+    }).catch(err => console.log('impossible de supprimer planingposte5'))
+    res.redirect('/poste5')
+  },
+
+  /**
+   * admin deconnecter
    * @param {*pour se déconnecter} req 
    * @param {*pour être redirigé vers la home} res 
    */

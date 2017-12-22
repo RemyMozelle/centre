@@ -33,6 +33,11 @@ app.use(session({
   saveUninitialized: false,
 }))
 
+
+/**
+ * PARTI PASSPORT JS
+ */
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -71,7 +76,9 @@ passport.use(new LocalStrategy({
 ));
 
 app.use('/', (req, res, next) => {
-  if (req.isAuthenticated()) {console.log('tu es connecté');}
+  if (req.isAuthenticated()) {
+
+  }
   next();
 })
 
