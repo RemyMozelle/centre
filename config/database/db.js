@@ -2,19 +2,24 @@ const mysql = require('mysql');
 const dotenv = require('dotenv').config({ path: '.env' });
 
 const db = {
-  getDb(env = 'jaws') {
+  getDb(env = 'cleardb') {
     
-    if (env == 'jaws') {
-      const connection = mysql.createConnection(process.env.JAWSDB_URL);
+    if (env == 'cleardb') {
+      const connection = mysql.createPool({
+        host: process.env.HOST,
+        user: process.env.USERNAME,
+        password: process.env.PASSWORD,
+        database: process.env.DATABASE,
+
+      });
       return connection
       
     } else {
       const connection = mysql.createPool({
-        connectionLimit: 10,
         host: 'localhost',
         user: 'root',
         password: 'root',
-        database: 'centrev2'
+        database: 'centrev2',
       })
       return connection;
     }
@@ -23,10 +28,9 @@ const db = {
   schemaHeroku() {
     const connection = {
       host: process.env.HOST,
-      username: process.env.USERNAME,
+      user: process.env.USERNAME,
       password: process.env.PASSWORD,
       database: process.env.DATABASE,
-      port: process.env.PORT
     }
     return connection
   },
@@ -36,7 +40,7 @@ const db = {
       host: 'localhost',
       user: 'root',
       password: 'root',
-      database: 'centrev2'
+      database: 'centrev2',
     } 
     return connection;
   }
