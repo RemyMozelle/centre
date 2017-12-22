@@ -10,7 +10,7 @@ const db = {
       
     } else {
       const connection = mysql.createPool({
-        connectionLimit: 50,
+        connectionLimit: 10,
         host: 'localhost',
         user: 'root',
         password: 'root',
