@@ -6,6 +6,10 @@ POUR LA CONFIG EN LOCAL
             -> new MySQLStore(db.schema())
 
 
+soucis avec nodemon j'ai du install la version : 1.12.1
+pour nodemon : npm install @1.12.1 
+
+
 le centre fonctionnes sur 5 postes sur réservations de 1 semaines
 
 problème : passport en ligne avec heroku impossible de se connecté, aucun soucis en local
