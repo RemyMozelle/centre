@@ -11,7 +11,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
 const flash = require('connect-flash');
 const MySQLStore = require('express-mysql-session')(session);
-const sessionStore = new MySQLStore(db.schema())
+const sessionStore = new MySQLStore(db.schemaHeroku())
 
 app.set('view engine', 'ejs');
 app.set('views', 'app/views');

@@ -20,6 +20,11 @@ const db = {
     }
   },
 
+  schemaHeroku() {
+    const connection = mysql.createConnection(process.env.JAWSDB_URL);
+    return connection
+  },
+
   schema() {
     const connection = {
       host: 'localhost',
